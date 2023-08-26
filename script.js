@@ -5,6 +5,8 @@ let imgId = 0;
 var i = 1;
 var imgCount = [];
 var intervalId;
+let timer;
+let second;
 
 
 img.forEach((item) => {
@@ -30,8 +32,7 @@ function rightImgShow() {
             img[i - 1].classList.add("inactive");
             img[i - 1].classList.remove("active");
             i += 1;
-            console.log(`This is image/i ${i}`)
-            // console.log(`This is img count length ${imgCountLength}`)
+            // console.log(`This is image/i ${i}`)
         }
     }
 }
@@ -54,8 +55,7 @@ function leftImgShow() {
                 img[i - 1].classList.add("inactive");
                 img[i - 1].classList.remove("active");
                 i -= 1;
-                console.log(`This is image/i ${i}`)
-                // console.log(`This is img count length ${imgCountLength}`)
+                // console.log(`This is image/i ${i}`)
             }
         }
     });
@@ -87,16 +87,14 @@ function autoplaySlide() {
 }
 
 
-let timer;
-let second;
-function startTimer(){
+function startTimer() {
     console.log(second);
-    if(second >= 1){
+    if (second >= 1) {
         autoplaySlide();
         clearInterval(timer);
         second = 0;
     }
-    else{
+    else {
         second++;
     }
 }
@@ -120,3 +118,18 @@ rightBtn.addEventListener('click', (e) => {
 
 
 autoplaySlide();
+
+
+function cursorFollower() {
+    let cursor = document.querySelector(".cursor-follower");
+    let imgContainer = document.querySelector(".img-container");
+    let containerRect = imgContainer.getBoundingClientRect();
+    let mouseX = containerRect.left;
+    let mouseY = containerRect.top;
+    window.addEventListener('mousemove', (e) => {
+        let x = e.clientX - mouseX - 8;
+        let y = e.clientY - mouseY - 8;
+        cursor.style.transform = `translate(${x}px, ${y}px)`;
+    });
+}
+cursorFollower()
