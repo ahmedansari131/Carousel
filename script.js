@@ -4,6 +4,8 @@ let img = document.querySelectorAll("img");
 let imgId = 0;
 var i = 1;
 var imgCount = [];
+var intervalId;
+
 
 img.forEach((item) => {
     item.setAttribute("id", imgId);
@@ -28,14 +30,38 @@ function rightImgShow() {
             img[i - 1].classList.add("inactive");
             img[i - 1].classList.remove("active");
             i += 1;
-            console.log(`This is i ${i}`)
-            console.log(`This is img count length ${imgCountLength}`)
+            console.log(`This is image/i ${i}`)
+            // console.log(`This is img count length ${imgCountLength}`)
         }
     }
 }
 
 
-let intervalId;
+function leftImgShow() {
+    img.forEach((item) => {
+        if (item.matches(".active")) {
+            if (i === 2) {
+                leftBtn.style.visibility = "hidden";
+                rightBtn.style.visibility = "visible";
+            }
+
+            if (i <= imgCountLength) {
+                rightBtn.style.visibility = "visible"
+            }
+
+            if (i <= imgCountLength) {
+                img[i - 2].classList.add("active");
+                img[i - 1].classList.add("inactive");
+                img[i - 1].classList.remove("active");
+                i -= 1;
+                console.log(`This is image/i ${i}`)
+                // console.log(`This is img count length ${imgCountLength}`)
+            }
+        }
+    });
+}
+
+
 function autoplaySlide() {
     let slideOver = false;
     intervalId = setInterval(() => {
@@ -61,37 +87,36 @@ function autoplaySlide() {
 }
 
 
-function leftImgShow() {
-    img.forEach((item) => {
-        if (item.matches(".active")) {
-            if (i === 2) {
-                leftBtn.style.visibility = "hidden";
-                rightBtn.style.visibility = "visible";
-            }
-
-            if (i <= imgCountLength) {
-                rightBtn.style.visibility = "visible"
-            }
-
-            if (i <= imgCountLength) {
-                img[i - 2].classList.add("active");
-                img[i - 1].classList.add("inactive");
-                img[i - 1].classList.remove("active");
-                i -= 1;
-                console.log(`This is i ${i}`)
-                console.log(`This is img count length ${imgCountLength}`)
-            }
-        }
-    });
+let timer;
+let second;
+function startTimer(){
+    console.log(second);
+    if(second >= 1){
+        autoplaySlide();
+        clearInterval(timer);
+        second = 0;
+    }
+    else{
+        second++;
+    }
 }
 
 
 leftBtn.addEventListener('click', (e) => {
+    second = 1;
+    clearInterval(intervalId);
+    clearInterval(timer);
     leftImgShow();
+    timer = setInterval(startTimer, 1000);
 });
 
 rightBtn.addEventListener('click', (e) => {
+    second = 1;
+    clearInterval(intervalId);
+    clearInterval(timer);
     rightImgShow();
+    timer = setInterval(startTimer, 1000);
 });
+
 
 autoplaySlide();
