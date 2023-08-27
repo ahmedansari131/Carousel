@@ -1,6 +1,6 @@
 let leftBtn = document.querySelector("#left");
 let rightBtn = document.querySelector("#right");
-let img = document.querySelectorAll("img");
+let img = document.querySelectorAll(".slide img");
 let imgId = 0;
 var i = 1;
 var imgCount = [];
@@ -132,4 +132,4 @@ function cursorFollower() {
         cursor.style.transform = `translate(${x}px, ${y}px)`;
     });
 }
-cursorFollower()
+cursorFollower();
