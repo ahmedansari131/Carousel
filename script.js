@@ -133,3 +133,64 @@ function cursorFollower() {
     });
 }
 cursorFollower();
+
+
+
+// CARDS SLIDER SECTION STARTS HERE
+let cardsDet = [
+    {
+        img: "img/road-1072823_1280.jpg",
+        title: "Amazing Shirt",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
+    },
+    {
+        img: "img/flowers-276014_1280.jpg",
+        title: "Amazing Shoes",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
+    },
+    {
+        img: "img/dandelion-445228_1280.jpg",
+        title: "Amazing Watch",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
+    },
+    {
+        img: "img/aurora-1197753_1280.jpg",
+        title: "Amazing Socks",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
+    },
+    {
+        img: "img/mountains-190055_1280.jpg",
+        title: "Amazing Coat",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
+    }
+];
+
+let slides = document.querySelector(".slides");
+let cards = "";
+cardsDet.forEach((item, index) => {
+    cards += `<div class="cards" id="${index}">
+                <img src="${item.img}" alt="">
+                <h3>${item.title}</h3>
+                <p>${item.info}</p>
+                <div class="cta">
+                    <button class="btn btn-primary">View</button>
+                    <button class="btn btn-secondary">Later</button>
+                </div>
+            </div>`;
+});
+slides.innerHTML = cards;
+let cardItem = document.querySelectorAll(".cards");
+cardItem.forEach((item) => {
+    let getStyles = window.getComputedStyle(item);
+    item.style.width = `${(slides.clientWidth / 3) - getStyles.marginRight.slice(0,2)}px`;
+});

@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,17 +7,17 @@
     text-decoration: none;
 }
 
-body{
+body {
     overflow-x: hidden;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
 
-.container{
+.container {
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
@@ -25,7 +25,7 @@ body::-webkit-scrollbar{
     scroll-snap-align: start;
 }
 
-.img-container{
+.img-container {
     display: flex;
     width: 100%;
     height: 100%;
@@ -35,7 +35,7 @@ body::-webkit-scrollbar{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.slide{
+.slide {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -43,14 +43,14 @@ body::-webkit-scrollbar{
     user-select: none;
 }
 
-.img-container img{
+.img-container img {
     width: 100%;
     transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
     visibility: hidden;
     opacity: 0;
 }
 
-.img-container::before{
+.img-container::before {
     content: '';
     background-color: rgba(0, 0, 0);
     position: absolute;
@@ -62,17 +62,17 @@ body::-webkit-scrollbar{
     opacity: .5;
 }
 
-.inactive{
+.inactive {
     visibility: hidden;
     opacity: 0;
 }
 
-.img-container img.active{
+.img-container img.active {
     visibility: visible;
     opacity: 1;
 }
 
-.arr-btn{
+.arr-btn {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -82,26 +82,26 @@ body::-webkit-scrollbar{
     z-index: 3;
 }
 
-.arrow{
+.arrow {
     padding: .8em 1em;
     cursor: pointer;
 }
 
-.arrow:hover{
+.arrow:hover {
     background-color: rgba(255, 255, 255, .2);
     border-radius: 10px;
 }
 
-#left{
+#left {
     visibility: hidden;
 }
 
-i{
+i {
     color: white;
     font-size: 2.5rem;
 }
 
-.cursor-follower{
+.cursor-follower {
     position: absolute;
     top: 0;
     left: 0;
@@ -117,62 +117,94 @@ i{
 
 
 /* SLIDER 2 STARTS HERE */
-#container2{
-    border: 2px solid black;
+#container2 {
+    height: 100vh;
     scroll-snap-align: start;
+    width: 100vw;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    /* background-color: #212121; */
 }
 
-#slider2{
+#slider2 {
+    padding: 0 2em;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
     width: 100%;
-    /* background-color: pink; */
-    white-space: nowrap;
-    height: 100%;
-    overflow-x: hidden;
-    padding: 2em;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.cards{
-    display: inline-block;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    border-radius: 10px;
-    row-gap: 1em;
-    padding: 3em 3em;
-    width: 30%;
-    white-space:normal;
-    background-color: white;
-    vertical-align: top;
-    margin-right: 4.6%;
+    justify-content: left;
+    overflow: hidden;
+    padding: 1em 0;
+    padding-left: 1em;
+    position: relative;
     overflow: hidden;
 }
 
-.cards img{
-    width: 100%;
+#left-1 {
+    top: 50%;
+    left: 0;
+    transform: translate(20%, -50%);
+}
+
+#right-1 {
+    top: 50%;
+    right: 0;
+    transform: translate(-20%, -50%);
+}
+
+.arrow-1 {
+    padding: 1em;
+    position: absolute;
+    position: absolute;
+    background-color: white;
+    z-index: 2;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.arrow-1 i{
+    color: #40bbec;
+}
+
+.cards {
+    flex: 0 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+    padding: 3em 3em;
+    background-color: white;
+    overflow: hidden;
+    margin-right: 2em;
+}
+
+.cards img {
+    max-width: 100%;
+    height: auto;
     border-radius: 8px;
 }
 
-.cards h3{
+.cards h3 {
     margin-top: 1em;
     font-size: 1.8rem;
 }
 
-.cards p{
+.cards p {
     margin-top: 1em;
     line-height: 23px;
     color: rgb(97, 97, 97);
 }
 
-.cards .cta{
+.cards .cta {
     display: flex;
     column-gap: 2em;
     margin-top: 1.2em;
 }
 
-.cards .btn{
+.cards .btn {
     padding: .7em 1.8em;
     font-size: 1.1rem;
     border-radius: 8px;
@@ -180,13 +212,13 @@ i{
     font-weight: 500;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #40bbec;
     color: white;
     border: 1px solid #40bbec;
 }
 
-.btn-secondary{
+.btn-secondary {
     background-color: transparent;
     border: 1px solid #212121;
 }
