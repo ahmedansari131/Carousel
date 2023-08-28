@@ -124,7 +124,7 @@ i {
     overflow: hidden;
     display: flex;
     align-items: center;
-    /* background-color: #212121; */
+    /* margin: 0; */
 }
 
 #slider2 {
@@ -142,6 +142,7 @@ i {
     padding-left: 1em;
     position: relative;
     overflow: hidden;
+    /* background-color: pink; */
 }
 
 #left-1 {
@@ -179,6 +180,7 @@ i {
     background-color: white;
     overflow: hidden;
     margin-right: 2em;
+    transition: all .5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .cards img {
@@ -190,6 +192,7 @@ i {
 .cards h3 {
     margin-top: 1em;
     font-size: 1.8rem;
+    color: #212121;
 }
 
 .cards p {
@@ -210,6 +213,7 @@ i {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
+    color: #212121;
 }
 
 .btn-primary {

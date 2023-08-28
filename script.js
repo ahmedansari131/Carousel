@@ -172,25 +172,66 @@ let cardsDet = [
         info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
         exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
         vitae pariatur veniam. Soluta, libero?`,
+    },
+    {
+        img: "img/mountains-190055_1280.jpg",
+        title: "Amazing Coat",
+        info: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non illo mollitia assumenda, molestiae sint
+        exercitationem minus placeat. Maxime molestias optio doloribus dolores animi, suscipit laboriosam
+        vitae pariatur veniam. Soluta, libero?`,
     }
 ];
 
 let slides = document.querySelector(".slides");
 let cards = "";
+
 cardsDet.forEach((item, index) => {
-    cards += `<div class="cards" id="${index}">
-                <img src="${item.img}" alt="">
-                <h3>${item.title}</h3>
-                <p>${item.info}</p>
-                <div class="cta">
-                    <button class="btn btn-primary">View</button>
-                    <button class="btn btn-secondary">Later</button>
-                </div>
-            </div>`;
+    cards += `<div class="cards" id="${index + 1}">
+    <img src="${item.img}" alt="">
+    <h3>${item.title}</h3>
+    <p>${item.info}</p>
+    <div class="cta">
+    <button class="btn btn-primary">View</button>
+    <button class="btn btn-secondary">Later</button>
+    </div>
+    </div>`;
 });
 slides.innerHTML = cards;
+
 let cardItem = document.querySelectorAll(".cards");
-cardItem.forEach((item) => {
+cardItem.forEach((item, index) => {
     let getStyles = window.getComputedStyle(item);
-    item.style.width = `${(slides.clientWidth / 3) - getStyles.marginRight.slice(0,2)}px`;
+    item.style.width = `${(slides.clientWidth / 3) - getStyles.marginRight.slice(0, 2)}px`;
 });
+
+let slideCounter = 1;
+function leftSlideShow() {
+    cardItem.forEach((item, index) => {
+        item.style.transform = `translateX(${(-100 - 6.5) * slideCounter}%)`;
+    });
+    slideCounter++;
+
+    if (slideCounter >= cardItem.length - 2) {
+        slideCounter = 1;
+    }
+}
+
+function rightSlideShow() {
+    console.log(slideCounter);
+    if (slideCounter > 1) {
+        cardItem.forEach((item, index) => {
+            item.style.transform = `translateX(${(100 - 6.5) * slideCounter}%)`;
+        });
+    }
+}
+
+let leftSlideBtn = document.querySelector("#left-1");
+leftSlideBtn.addEventListener('click', (e) => {
+    leftSlideShow();
+});
+
+let rightSlideBtn = document.querySelector("#right-1");
+rightSlideBtn.addEventListener('click', (e) => {
+    rightSlideShow();
+});
+
